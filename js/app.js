@@ -4,15 +4,22 @@ const productscontainer = $.getElementById("productscontainer");
 const sidebarSearch = $.querySelector(".sidebar--search");
 const searchList = $.querySelector(".search--list");
 const searchInputElm = $.querySelector(".sidebar--input");
+let allProducts = products;
+let productItems;
 
 const productCategoriesItems = productCategories.map((cat) => {
   return generateProductCategory(cat);
 });
 
-const productItems = products.map((product) => {
-  return generateCard(product);
-});
+function setDisplayProduct(showProducts) {
+  productItems = showProducts.map((product) => {
+    return generateCard(product);
+  });
+}
 
+setDisplayProduct(allProducts);
+
+// generate card of products
 function generateCard(product) {
   return `
     <div class="col col-product mb-4">
@@ -40,7 +47,13 @@ function generateCard(product) {
 }
 
 function generateProductCategory(category) {
-  return `<li class="category--item"> ${category.name}</li>`;
+  return `
+        <li class="category--item"> 
+             <label>
+                 <input type="radio" name="category" class="selectCategory" data-id="${category.id}"/>
+                 ${category.name}
+            </label>
+        </li>`;
 }
 
 categoriesList.innerHTML = productCategoriesItems.join("");
@@ -94,4 +107,34 @@ function selectInputItem() {
       searchList.innerHTML = "";
     });
   });
+}
+
+function selectCategory() {
+  const selectCategory = $.querySelectorAll(".selectCategory");
+
+  selectCategory.forEach((cat) => {
+    cat.addEventListener("change", () => {
+      let catId = cat.getAttribute("data-id");
+      let products = getProductsByCatgory(catId);
+      //console.log(products);
+      //setDisplayProduct(products);
+
+      let productItems = products.map((product) => {
+        return generateCard(product);
+      });
+      productscontainer.innerHTML = productItems.join("");
+    });
+  });
+}
+
+selectCategory();
+
+function getCategory(catId) {}
+
+function getProductsByCatgory(catId) {
+  if (catId === "all") {
+    return products;
+  }
+  catId = parseInt(catId);
+  return products.filter((product) => product.cat === catId);
 }

@@ -1,5 +1,9 @@
 const productCategories = [
   {
+    id: "all",
+    name: "all",
+  },
+  {
     id: 1,
     name: "Frontend",
   },
@@ -48,6 +52,7 @@ const products = [
     description: "How to learn HTML & CSS",
     price: 45,
     image: "images/css.jpg",
+    cat: 1,
   },
   {
     id: 3,
@@ -55,6 +60,7 @@ const products = [
     description: "How to learn JavaScript",
     price: 90,
     image: "images/javascript.jpg",
+    cat: 3,
   },
   {
     id: 4,
@@ -62,6 +68,7 @@ const products = [
     description: "How to become Freelancer",
     price: 24,
     image: "images/Freelancer.jpg",
+    cat: 8,
   },
   {
     id: 5,
@@ -69,6 +76,7 @@ const products = [
     description: "How to become Web Designer",
     price: 33,
     image: "images/web-designer.jpg",
+    cat: 7,
   },
   {
     id: 6,
@@ -76,6 +84,7 @@ const products = [
     description: "How to start Gaming Channel",
     price: 12,
     image: "images/programer.jpg",
+    cat: 6,
   },
   {
     id: 7,
@@ -83,6 +92,7 @@ const products = [
     description: "How to start YouTube Channel",
     price: 27,
     image: "images/youtube.jpg",
+    cat: 6,
   },
   {
     id: 8,
@@ -90,6 +100,7 @@ const products = [
     description: "What does HTML stands for?",
     price: 35,
     image: "images/programer.jpg",
+    cat: 6,
   },
   {
     id: 9,
@@ -97,5 +108,6 @@ const products = [
     description: "What does CSS stands for?",
     price: 23,
     image: "images/web-designer.jpg",
+    cat: 6,
   },
 ];
